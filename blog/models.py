@@ -11,7 +11,7 @@ class Category(models.Model):
 
 
 class Post(models.Model):
-    class PostObject(models.Model):
+    class PostObject(models.Manager):
         def get_queryset(self):
             return super().get_queryset() .filter(status='published')
 
@@ -30,8 +30,8 @@ class Post(models.Model):
     author = models.ForeignKey(
         User, on_delete=models.CASCADE, related_name='blog_posts')
     status = models.CharField(max_length=10, choices=options, default='published')
-    objects = models.Manager(),     # default manager
-    postobjects = PostObject()      # custom manager
+    objects = models.Manager()     # default manager
+    postobjects = PostObject()
 
     class Meta:
         ordering = ('-published',)

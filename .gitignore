@@ -6,7 +6,7 @@ __pycache__/
 # Local development settings
 *.env
 *.sqlite3
-
+.env
 .idea/
 
 # Logs
